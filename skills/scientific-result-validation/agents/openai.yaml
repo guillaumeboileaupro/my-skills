@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Result Validation"
+  short_description: "Valide les résultats scientifiques"
+  default_prompt: "Utilise $scientific-result-validation pour vérifier ces résultats et leur reproductibilité."

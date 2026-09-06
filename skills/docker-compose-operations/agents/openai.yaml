@@ -1,0 +1,4 @@
+interface:
+  display_name: "Docker Compose Operations"
+  short_description: "Diagnostique Compose sans perdre les données"
+  default_prompt: "Utilise $docker-compose-operations pour inspecter et corriger cet environnement Compose."

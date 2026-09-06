@@ -1,0 +1,4 @@
+interface:
+  display_name: "README TODO Maintenance"
+  short_description: "Synchronise documentation et état du code"
+  default_prompt: "Utilise $readme-todo-maintenance pour mettre à jour le README et le TODO avec des faits vérifiés."

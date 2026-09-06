@@ -1,0 +1,4 @@
+interface:
+  display_name: "Release Readiness Audit"
+  short_description: "Décide si une version est publiable"
+  default_prompt: "Utilise $release-readiness-audit pour rendre une décision de publication fondée sur des preuves."

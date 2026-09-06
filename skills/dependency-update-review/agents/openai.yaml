@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dependency Update Review"
+  short_description: "Analyse les risques d une mise à jour"
+  default_prompt: "Utilise $dependency-update-review pour analyser cette mise à jour de dépendances."

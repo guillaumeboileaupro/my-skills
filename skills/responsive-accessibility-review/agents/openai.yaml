@@ -1,0 +1,4 @@
+interface:
+  display_name: "Responsive Accessibility Review"
+  short_description: "Audite responsive et accessibilité"
+  default_prompt: "Utilise $responsive-accessibility-review pour auditer cette interface sur écran, clavier et tactile."

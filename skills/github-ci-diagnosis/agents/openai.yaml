@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub CI Diagnosis"
+  short_description: "Diagnostique les échecs GitHub Actions"
+  default_prompt: "Utilise $github-ci-diagnosis pour trouver la première cause actionnable de cet échec CI."

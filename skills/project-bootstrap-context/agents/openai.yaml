@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Bootstrap Context"
+  short_description: "Structure le contexte d un nouveau projet"
+  default_prompt: "Utilise $project-bootstrap-context pour préparer ce projet pour Codex et Claude."

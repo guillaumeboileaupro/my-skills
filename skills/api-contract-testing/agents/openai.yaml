@@ -1,0 +1,4 @@
+interface:
+  display_name: "API Contract Testing"
+  short_description: "Vérifie les contrats API et clients"
+  default_prompt: "Utilise $api-contract-testing pour tester ce contrat API et ses consommateurs."
