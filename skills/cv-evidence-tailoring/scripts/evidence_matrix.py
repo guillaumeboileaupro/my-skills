@@ -5,7 +5,7 @@ from pathlib import Path
 
 evidence = json.loads(Path(sys.argv[1]).read_text())
 requirements = [line.strip() for line in Path(sys.argv[2]).read_text().splitlines() if line.strip()]
-items = evidence.get("evidence", evidence if isinstance(evidence, list) else [])
+items = evidence if isinstance(evidence, list) else evidence.get("evidence", [])
 for requirement in requirements:
     words = {word.lower() for word in requirement.split() if len(word) > 3}
     matches = [item for item in items if words & set(str(item).lower().split())]

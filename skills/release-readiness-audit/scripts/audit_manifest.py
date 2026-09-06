@@ -6,6 +6,12 @@ from pathlib import Path
 
 manifest = json.loads(Path(sys.argv[1]).read_text())
 missing = [key for key in ("version", "commit", "checks", "artifacts") if key not in manifest]
+checks = manifest.get("checks")
+if checks is not None:
+    if not isinstance(checks, dict) or not checks:
+        missing.append("checks:incomplete")
+    else:
+        missing.extend(f"check:{name}" for name, result in checks.items() if result is not True)
 for artifact in manifest.get("artifacts", []):
     path = Path(artifact.get("path", ""))
     if not path.is_file():
