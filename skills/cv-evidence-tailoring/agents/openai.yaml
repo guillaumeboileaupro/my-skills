@@ -1,0 +1,4 @@
+interface:
+  display_name: "CV Evidence Tailoring"
+  short_description: "Adapte un CV sans inventer"
+  default_prompt: "Utilise $cv-evidence-tailoring pour adapter ce CV uniquement avec des expériences vérifiables."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Privacy First Local AI"
+  short_description: "Protège les données traitées localement"
+  default_prompt: "Utilise $privacy-first-local-ai pour concevoir ou auditer cette fonction IA locale."

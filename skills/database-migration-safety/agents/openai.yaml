@@ -1,0 +1,4 @@
+interface:
+  display_name: "Database Migration Safety"
+  short_description: "Sécurise les migrations de données"
+  default_prompt: "Utilise $database-migration-safety pour préparer et vérifier cette migration."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Repository Health Review"
+  short_description: "Évalue la santé et les priorités du code"
+  default_prompt: "Utilise $repository-health-review pour évaluer ce projet et prioriser les prochaines actions."
