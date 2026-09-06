@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Data Pipeline"
+  short_description: "Construit des pipelines traçables"
+  default_prompt: "Utilise $evidence-data-pipeline pour construire ou revoir ce pipeline de données."
