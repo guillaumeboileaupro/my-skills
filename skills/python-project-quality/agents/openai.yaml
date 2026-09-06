@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python Project Quality"
+  short_description: "Structure et vérifie les projets Python"
+  default_prompt: "Utilise $python-project-quality pour structurer et vérifier ce projet Python."

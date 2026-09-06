@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multiplatform App Release"
+  short_description: "Prépare les paquets desktop et Android"
+  default_prompt: "Utilise $multiplatform-app-release pour préparer et vérifier cette livraison multiplateforme."
