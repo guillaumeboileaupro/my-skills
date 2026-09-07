@@ -1,0 +1,96 @@
+name: Skill library CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate shell scripts
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' script; do
+            bash -n "$script"
+          done < <(find scripts skills -type f -name '*.sh' -print0)
+
+      - name: Validate skill metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          skills_root = Path("skills")
+          problems: list[str] = []
+          skill_dirs = sorted(path for path in skills_root.iterdir() if path.is_dir())
+
+          if not skill_dirs:
+              problems.append("no skill directories found")
+
+          for skill_dir in skill_dirs:
+              skill_file = skill_dir / "SKILL.md"
+              if not skill_file.is_file():
+                  problems.append(f"{skill_dir}: missing SKILL.md")
+                  continue
+
+              lines = skill_file.read_text(encoding="utf-8").splitlines()
+              if not lines or lines[0].strip() != "---":
+                  problems.append(f"{skill_file}: missing opening frontmatter delimiter")
+                  continue
+
+              try:
+                  end = next(index for index, line in enumerate(lines[1:], start=1) if line.strip() == "---")
+              except StopIteration:
+                  problems.append(f"{skill_file}: missing closing frontmatter delimiter")
+                  continue
+
+              frontmatter = lines[1:end]
+              keys = {
+                  line.split(":", 1)[0].strip()
+                  for line in frontmatter
+                  if ":" in line and not line.lstrip().startswith("#")
+              }
+              for required in ("name", "description"):
+                  if required not in keys:
+                      problems.append(f"{skill_file}: missing frontmatter key '{required}'")
+
+          if problems:
+              raise SystemExit("\n".join(problems))
+          print(f"Validated {len(skill_dirs)} skills")
+          PY
+
+      - name: Compile Python helpers
+        run: python -m compileall -q skills tests
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Exercise Codex and Claude installer
+        run: |
+          set -euo pipefail
+          tmp_home="$(mktemp -d)"
+          HOME="$tmp_home" bash scripts/install.sh
+
+          expected="$(find skills -mindepth 1 -maxdepth 1 -type d | wc -l)"
+          codex_count="$(find "$tmp_home/.codex/skills" -mindepth 1 -maxdepth 1 -type l | wc -l)"
+          claude_count="$(find "$tmp_home/.claude/skills" -mindepth 1 -maxdepth 1 -type l | wc -l)"
+
+          test "$codex_count" -eq "$expected"
+          test "$claude_count" -eq "$expected"
+
+          while IFS= read -r -d '' link; do
+            test -e "$link"
+          done < <(find "$tmp_home/.codex/skills" "$tmp_home/.claude/skills" -type l -print0)
