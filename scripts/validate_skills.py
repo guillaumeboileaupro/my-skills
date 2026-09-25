@@ -1,5 +1,7 @@
 """Validate the YAML metadata of every skill in a library."""
 
+from __future__ import annotations
+
 from pathlib import Path
 
 import yaml
