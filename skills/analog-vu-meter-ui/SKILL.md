@@ -63,3 +63,7 @@ Provide a signal-level slider, spring-stiffness slider, damping slider, a 0 VU s
 3. Under-damped preset shows overshoot; heavily damped preset does not.
 4. No memory leaks, unstable integration or off-scale needle positions.
 5. Responsive, accessible, and visually faithful to vintage analog meters.
+
+## Executable reference
+
+Open [`examples/vu-meter.html`](examples/vu-meter.html) directly in a browser for the standalone HTML/CSS/SVG/JavaScript prototype. It demonstrates spring dynamics, damping, step and release controls, and simulated music. The prototype uses an illustrative VU scale and is not calibrated as a standards-compliant measurement instrument. Treat the physics and calibration requirements above as the production acceptance target.
