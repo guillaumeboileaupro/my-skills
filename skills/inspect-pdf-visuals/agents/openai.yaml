@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tableaux et schémas PDF"
+  short_description: "Vérifier les tableaux et schémas dans les PDF"
+  default_prompt: "Utilise $inspect-pdf-visuals pour analyser les tableaux et schémas de ces pages."

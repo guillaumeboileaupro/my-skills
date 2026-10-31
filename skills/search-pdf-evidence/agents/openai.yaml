@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recherche PDF sourcée"
+  short_description: "Rechercher des preuves avec pages et versions"
+  default_prompt: "Utilise $search-pdf-evidence pour retrouver les passages qui répondent à ma question."

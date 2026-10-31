@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit des manques documentaires"
+  short_description: "Repérer manques, contradictions et tests bloqués"
+  default_prompt: "Utilise $audit-spec-gaps pour identifier les informations manquantes dans ces spécifications."
