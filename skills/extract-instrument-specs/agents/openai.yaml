@@ -1,0 +1,4 @@
+interface:
+  display_name: "Extraction des spécifications"
+  short_description: "Structurer exigences et interfaces des instruments"
+  default_prompt: "Utilise $extract-instrument-specs pour extraire les exigences et interfaces de ces PDF."
